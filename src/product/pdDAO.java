@@ -126,7 +126,7 @@ public class pdDAO {
 		ResultSet rs = null;
 
 		try {
-			pstmt = conn.prepareStatement("SELECT * FROM productinformation WHERE id=?");
+			pstmt = conn.prepareStatement("SELECT * FROM productinformation WHERE pdcode=?");
 			pstmt.setString(1, pdcode);
 			rs = pstmt.executeQuery();
 			if(rs.next()){

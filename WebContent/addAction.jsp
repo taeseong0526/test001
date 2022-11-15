@@ -15,20 +15,23 @@
 		String pdcode = request.getParameter("pdcode");
 		pdDAO dao = new pdDAO();
 		pdDTO dto = new pdDTO();
-		ArrayList<pdDTO> list = (ArrayList<pdDTO>) session.getAttribute("productlist");
+		ArrayList<pdDTO> list = (ArrayList<pdDTO>)session.getAttribute("productlist");
 
 		if (list == null) {
 			list = new ArrayList<pdDTO>();
-			list.add(dao.cart(pdcode));
+			
 
-			session.setAttribute("productlist", list);
-
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('상품추가완료.')");
-			script.println("location.href='addlist.jsp'");
-			script.println("</script>");
 		}
+		
+		list.add(dao.cart((String)pdcode));
+		session.setAttribute("productlist", list);
+		
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('상품추가완료.')");
+		script.println("location.href='addlist.jsp'");
+		script.println("</script>");
+		
 	%>
 	<%=pdcode%>
 

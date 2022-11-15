@@ -13,7 +13,7 @@
 <body>
 
 	<%@ include file="/menu.jsp"%>
-	
+
 	<h1>장바구니</h1>
 	<div class="container">
 		<div class="row">
@@ -28,15 +28,14 @@
 					</tr>
 				</thead>
 				<%
-					
 					PrintWriter script = response.getWriter();
 					pdDAO dao = new pdDAO();
 					pdDTO dto = new pdDTO();
-					
-					ArrayList<pdDTO> list = (ArrayList)session.getAttribute("productlist");
-					list = new ArrayList<pdDTO>();
+
+					ArrayList<pdDTO> list = (ArrayList<pdDTO>)session.getAttribute("productlist");
+	
 				%>
-				
+
 				<%
 					for (pdDTO dtos : list) {
 				%>
@@ -47,8 +46,11 @@
 						<td><%=dtos.getStock()%></td>
 						<td><%=dtos.getPdsize()%></td>
 				</tbody>
+
+
 				<%
 					} //for 문의 끝
+
 				%>
 			</table>
 		</div>
